@@ -4165,9 +4165,9 @@ module Mousetrap
 
     @export_function ColumnView set_enable_rubberband_selection! Cvoid Bool b
     @export_function ColumnView get_enable_rubberband_selection Bool
-    @export_function ColumnView set_show_row_separators Cvoid Bool b
+    @export_function ColumnView set_show_row_separators! Cvoid Bool b
     @export_function ColumnView get_show_row_separators Bool
-    @export_function ColumnView set_show_column_separators Cvoid Bool b
+    @export_function ColumnView set_show_column_separators! Cvoid Bool b
     @export_function ColumnView get_show_column_separators Bool
     @export_function ColumnView set_single_click_activate! Cvoid Bool b
     @export_function ColumnView get_single_click_activate Bool
