@@ -8,9 +8,6 @@
 #!!!!!!FOR DEVELOPERS:::: MAKE SURE YOU CHANGE CXXWRAP VERSION WHEN COMPILING TARBALLS!!!!!!!!!
 #
 
-using Pkg
-Pkg.add(url="https://github.com/HyperSphereStudio/libmousetrap_jll")
-
 """
 # Mousetrap GUI Engine ($(Mousetrap.VERSION))
 
@@ -22,6 +19,9 @@ Copyright © 2023 C.Cords, Licensed under lGPL-3.0
 module Mousetrap
 
     const VERSION = v"0.3.3"
+
+    using Pkg
+    Pkg.add(url="https://github.com/HyperSphereStudio/libmousetrap_jll")
 
 ####### detail.jl
 
