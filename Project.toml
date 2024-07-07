@@ -1,7 +1,7 @@
 name = "Mousetrap"
 uuid = "5deeb4b9-6e04-4da7-8b7f-c77fb1eae65e"
 authors = ["C.Cords <mail@clemens-cords.com>"]
-version = "0.3.1"
+version = "0.4.0"
 
 [deps]
 BinaryBuilder = "12aac903-9f7c-5d81-afc2-d9565ea332ae"
@@ -15,10 +15,10 @@ Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 libadwaita_jll = "583852a3-1c13-5035-b52b-3b742a7b3316"
 libcxxwrap_julia_jll = "3eaa8342-bff7-56a5-9981-c04077f7cee7"
-mousetrap_jll = "287f9a42-973b-50d0-ae32-9952e735a47d"
+libmousetrap_jll = "287f9a42-973b-50d0-ae32-9952e735a47d"
 
 [compat]
 CxxWrap = "0.14.0"
-mousetrap_jll = "0.3.0"
+libmousetrap_jll = "0.4.0"
 GTK4_jll = "4.10"
 Glib_jll = "2.76"
