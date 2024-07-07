@@ -24,14 +24,7 @@ meson install -C build
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-#platforms = filter(p -> nbits(p) == 64 && !Sys.isapple(p), supported_platforms())
-#platforms = [Platform("x86_64", "linux")]
-
-platforms = [ Platform("x86_64", "linux"; ), Platform("x86_64", "windows"; ) ]
-for p in platforms
-	p["julia_version"] = string(juliaVersion)
-end
-#platforms = expand_cxxstring_abis(platforms)
+platforms = filter(p -> nbits(p) == 64 && !Sys.isapple(p), supported_platforms())
 
 println("Selected Platforms [no-apple]:", platforms)
 

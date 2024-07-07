@@ -20,9 +20,6 @@ module Mousetrap
 
     const VERSION = v"0.3.3"
 
-    using Pkg
-    Pkg.add(url="https://github.com/HyperSphereStudio/libmousetrap_jll")
-
 ####### detail.jl
 
     module detail
