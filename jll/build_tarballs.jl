@@ -1,12 +1,12 @@
 using BinaryBuilder, Pkg
 
 name = "libmousetrap"
-version = v"@MOUSETRAP_VERSION@"
+version = v"0.4.1"
 
 # Collection of sources required to complete build
 sources = [
-    GitSource("https://github.com/@MOUSETRAP_REPO_USER@/mousetrap.git", "@MOUSETRAP_COMMIT@"),
-    GitSource("https://github.com/@MOUSETRAP_REPO_USER@/mousetrap_julia_binding.git", "@MOUSETRAP_JULIA_BINDING_COMMIT@")
+    GitSource("https://github.com/HyperSphereStudio/mousetrap.git", "74507a0bffcfa29d11bd2b5e68268651f36afe7a"),
+    GitSource("https://github.com/HyperSphereStudio/mousetrap_julia_binding.git", "7a9dc111ae1c0dde187e8d0386082af9b46d0e1d")
 ]
 
 # Bash recipe for building across all platforms
@@ -28,7 +28,7 @@ rm cmake_toolchain_patch.ini
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 #platforms = filter(p -> nbits(p) == 64 && !Sys.isapple(p), supported_platforms())
-platforms = [Platform("x86_64", "linux")] #[ Platform("x86_64", "windows"; ) ]
+platforms = [ Platform("x86_64", "windows"; ) ]
 
 println("Selected Platforms [no-apple]:", platforms)
 

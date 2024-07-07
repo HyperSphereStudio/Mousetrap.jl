@@ -1,14 +1,17 @@
-FROM debian:latest
+#FROM debian:latest
+FROM ubuntu:20.04
 
 RUN apt-get update \
     && apt-get install -y \
-        curl	\
-		sudo 	\
+        curl		  \
+	build-essential   \
+		sudo 	  \
     && rm -rf /var/lib/apt/lists/*
 
 # Set environment variables for Julia version and installation path
 ENV JULIA_VERSION=1.8.0
 ENV JULIA_DIR=/workspace/julia
+
 
 # Download and install Julia
 RUN curl -sSL "https://julialang-s3.julialang.org/bin/linux/x64/${JULIA_VERSION%.*}/julia-${JULIA_VERSION}-linux-x86_64.tar.gz" -o julia.tar.gz \

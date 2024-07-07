@@ -16,7 +16,7 @@ Copyright © 2023 C.Cords, Licensed under lGPL-3.0
 """
 module Mousetrap
 
-    const VERSION = v"0.3.1"
+    const VERSION = v"0.3.3"
 
 ####### detail.jl
 
@@ -35,9 +35,9 @@ module Mousetrap
             @initcxx()
         end
 
-        using mousetrap_jll
+        using libmousetrap_jll
         function get_mousetrap_julia_binding()
-            return mousetrap_jll.mousetrap_julia_binding
+            return libmousetrap_jll.mousetrap_julia_binding
         end
 
         try_update_gsettings_schema_dir()       # executed on `precompile Mousetrap`, but not on using, silences warning during installation

@@ -4,21 +4,19 @@ run(`$(git()) config --global user.name "Johnathan Bizzano"`)
 run(`$(git()) config --global user.email "bizzanoj@my.erau.edu"`)
 
 const repo_user = "HyperSphereStudio"
-const mousetrap_commit = "74507a0bffcfa29d11bd2b5e68268651f36afe7a"
-const mousetrap_julia_binding_commit = "7a9dc111ae1c0dde187e8d0386082af9b46d0e1d"
+const mousetrap_commit = "d1892f62b8bc433e428211a740706a18992cffda"
+const mousetrap_julia_binding_commit = "f63b6153e5d4a5d2f2621b1d2e914edea0a385d1"
 
-const VERSION = "0.4.0"
-const deploy_local = false
+const VERSION = "0.4.1"
+const deploy_local = true
 const skip_build = true
-
-# if local, files will be written to ~/.julia/dev/mousetrap_jll
 
 if deploy_local
     @info "Deployment: local"
     repo = "local"
 else
     @info "Deployment: github"
-    repo = "$repo_user/mousetrap_jll"
+    repo = "$repo_user/libmousetrap_jll"
 end
 
 ## Configure
