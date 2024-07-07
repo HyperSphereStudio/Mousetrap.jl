@@ -1,2 +1,2 @@
-docker buildx build -t julia-compiler2 -f docker.dockerfile .
+docker buildx build -t julia-compiler -f docker.dockerfile .
 pause

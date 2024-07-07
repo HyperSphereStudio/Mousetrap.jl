@@ -1,17 +1,16 @@
 #FROM debian:latest
-FROM ubuntu:20.04
+FROM ubuntu:latest
 
 RUN apt-get update \
     && apt-get install -y \
-        curl		  \
-	build-essential   \
-		sudo 	  \
+        curl		  	  \
+		build-essential   \
+		sudo 	  		  \
     && rm -rf /var/lib/apt/lists/*
 
 # Set environment variables for Julia version and installation path
-ENV JULIA_VERSION=1.8.0
-ENV JULIA_DIR=/workspace/julia
-
+ENV JULIA_VERSION=1.10.0
+ENV JULIA_DIR=/root/julia
 
 # Download and install Julia
 RUN curl -sSL "https://julialang-s3.julialang.org/bin/linux/x64/${JULIA_VERSION%.*}/julia-${JULIA_VERSION}-linux-x86_64.tar.gz" -o julia.tar.gz \
@@ -23,7 +22,7 @@ RUN curl -sSL "https://julialang-s3.julialang.org/bin/linux/x64/${JULIA_VERSION%
 ENV PATH=$JULIA_DIR/bin:$PATH
 
 # Run Julia once to precompile base libraries
-RUN julia -e 'using Pkg; Pkg.add("BinaryBuilder"); Pkg.precompile()'
+RUN julia -e 'using Pkg; Pkg.add(["BinaryBuilder", "Git"]); Pkg.precompile()'
 
 # Set the working directory for the container
 WORKDIR /workspace

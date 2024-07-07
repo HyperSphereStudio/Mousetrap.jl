@@ -8,8 +8,9 @@ const mousetrap_commit = "d1892f62b8bc433e428211a740706a18992cffda"
 const mousetrap_julia_binding_commit = "f63b6153e5d4a5d2f2621b1d2e914edea0a385d1"
 
 const VERSION = "0.4.1"
-const deploy_local = true
+const deploy_local = false
 const skip_build = true
+const tarball_name = "build_tarballs"
 
 if deploy_local
     @info "Deployment: local"
@@ -38,12 +39,12 @@ function configure_file(path_in::String, path_out::String)
     close(file_out)
 end
 
-@info "Configuring `build_tarballs.jl.in`"
-configure_file("./build_tarballs.jl.in", "./build_tarballs.jl")
+@info "Configuring `$tarball_name.jl.in`"
+configure_file("./$tarball_name.jl.in", "./$tarball_name.jl")
 
 path = joinpath(Sys.BINDIR, "../dev/mousetrap_jll")
 if isfile(path)
     run(`rm -r $path`)
 end
 
-run(`julia -t 8 build_tarballs.jl --debug --verbose --deploy=$repo`)
+run(`julia -t 8 $tarball_name.jl --debug --verbose --deploy=$repo`)

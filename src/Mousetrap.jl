@@ -4,7 +4,12 @@
 # Documentation: https://clemens-cords.com/mousetrap
 #
 # Copyright © 2023, Licensed under lGPL-3.0
+
+#!!!!!!FOR DEVELOPERS:::: MAKE SURE YOU CHANGE CXXWRAP VERSION WHEN COMPILING TARBALLS!!!!!!!!!
 #
+
+using Pkg
+Pkg.add(url="https://github.com/HyperSphereStudio/libmousetrap_jll")
 
 """
 # Mousetrap GUI Engine ($(Mousetrap.VERSION))

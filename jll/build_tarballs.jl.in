@@ -2,6 +2,7 @@ using BinaryBuilder, Pkg
 
 name = "libmousetrap"
 version = v"@MOUSETRAP_VERSION@"
+juliaVersion = v"1.10"
 
 # Collection of sources required to complete build
 sources = [
@@ -9,37 +10,39 @@ sources = [
     GitSource("https://github.com/@MOUSETRAP_REPO_USER@/mousetrap_julia_binding.git", "@MOUSETRAP_JULIA_BINDING_COMMIT@")
 ]
 
-# Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir
 echo -e "[binaries]\ncmake='/usr/bin/cmake'" >> cmake_toolchain_patch.ini
 cd mousetrap
-mkdir ${prefix}/share/licenses/mousetrap
-cp LICENSE ${prefix}/share/licenses/mousetrap/LICENSE
+install_license LICENSE
 meson setup build --cross-file=$MESON_TARGET_TOOLCHAIN --cross-file=../cmake_toolchain_patch.ini
 meson install -C build
 cd ../mousetrap_julia_binding
 meson setup build --cross-file=$MESON_TARGET_TOOLCHAIN --cross-file=../cmake_toolchain_patch.ini -DJulia_INCLUDE_DIRS=$prefix/include/julia
 meson install -C build
-cd ..
-rm cmake_toolchain_patch.ini
 """
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 #platforms = filter(p -> nbits(p) == 64 && !Sys.isapple(p), supported_platforms())
-platforms = [Platform("x86_64", "linux")] #[ Platform("x86_64", "windows"; ) ]
+#platforms = [Platform("x86_64", "linux")]
+
+platforms = [ Platform("x86_64", "linux"; ), Platform("x86_64", "windows"; ) ]
+for p in platforms
+	p["julia_version"] = string(juliaVersion)
+end
+#platforms = expand_cxxstring_abis(platforms)
 
 println("Selected Platforms [no-apple]:", platforms)
 
 # The products that we will ensure are always built
 products = [
     LibraryProduct("libmousetrap", :mousetrap),
-    LibraryProduct("libmousetrap_julia_binding", :mousetrap_julia_binding),
-    FileProduct(".", :mousetrap_file)
+    LibraryProduct("libmousetrap_julia_binding", :mousetrap_julia_binding)
 ]
 
 x11_platforms = filter(p -> Sys.islinux(p) || Sys.isfreebsd(p), platforms)
+
 # Dependencies that must be installed before this package can be built
 dependencies = [
     Dependency("GLEW_jll")
@@ -48,9 +51,9 @@ dependencies = [
     Dependency("libadwaita_jll")
     Dependency("OpenGLMathematics_jll")
     Dependency("libcxxwrap_julia_jll")
-    BuildDependency("libjulia_jll")
+    BuildDependency(PackageSpec(;name="libjulia_jll", version=v"1.10.10+0"))
     BuildDependency("Xorg_xorgproto_jll"; platforms = x11_platforms)
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies; julia_compat="1.6", preferred_gcc_version = v"12.0.4")
+build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies; julia_compat="1.10", preferred_gcc_version = v"13.0.0")

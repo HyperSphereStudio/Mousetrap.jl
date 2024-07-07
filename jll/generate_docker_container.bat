@@ -1,2 +1,2 @@
-docker run -ti --privileged julia-compiler2
+docker run -ti --privileged julia-compiler
 pause
