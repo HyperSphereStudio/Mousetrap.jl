@@ -7,7 +7,7 @@ const repo_user = "HyperSphereStudio"
 const mousetrap_commit = "d1892f62b8bc433e428211a740706a18992cffda"
 const mousetrap_julia_binding_commit = "f63b6153e5d4a5d2f2621b1d2e914edea0a385d1"
 
-const VERSION = "0.4.1"
+const VERSION = "0.4.2"
 const deploy_local = false
 const skip_build = true
 const tarball_name = "build_tarballs"
