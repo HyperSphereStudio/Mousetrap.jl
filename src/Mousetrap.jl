@@ -5,7 +5,6 @@
 #
 # Copyright © 2023, Licensed under lGPL-3.0
 
-#!!!!!!FOR DEVELOPERS:::: MAKE SURE YOU CHANGE CXXWRAP VERSION WHEN COMPILING TARBALLS!!!!!!!!!
 #
 
 """

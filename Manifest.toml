@@ -2,7 +2,7 @@
 
 julia_version = "1.10.0"
 manifest_format = "2.0"
-project_hash = "de3a655ff8374ac2d44be2103d9adea707d317d2"
+project_hash = "ee9a8a87a6ee14442d57c0b62d249cfac75785d9"
 
 [[deps.ANSIColoredPrinters]]
 git-tree-sha1 = "574baf8110975760d391c710b6341da1afa48d8c"
@@ -1000,11 +1000,11 @@ version = "0.13.2+0"
 
 [[deps.libmousetrap_jll]]
 deps = ["Artifacts", "GLEW_jll", "GLU_jll", "GTK4_jll", "JLLWrappers", "Libdl", "OpenGLMathematics_jll", "libadwaita_jll", "libcxxwrap_julia_jll"]
-git-tree-sha1 = "9f40f936d324672e3db92e810c7f0b98eb41e852"
+git-tree-sha1 = "d2bb148404e48edd2c033ecd9d3729902b40f907"
 repo-rev = "main"
 repo-url = "https://github.com/HyperSphereStudio/libmousetrap_jll"
 uuid = "287f9a42-973b-50d0-ae32-9952e735a47d"
-version = "0.4.1+0"
+version = "0.4.2+0"
 
 [[deps.libpng_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Zlib_jll"]

@@ -17,3 +17,7 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 libadwaita_jll = "583852a3-1c13-5035-b52b-3b742a7b3316"
 libcxxwrap_julia_jll = "3eaa8342-bff7-56a5-9981-c04077f7cee7"
 libmousetrap_jll = "287f9a42-973b-50d0-ae32-9952e735a47d"
+
+[compat]
+CxxWrap = "0.16.0"
+julia = "1.10"
