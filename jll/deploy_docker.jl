@@ -12,6 +12,9 @@ const deploy_local = false
 const skip_build = true
 const tarball_name = "build_tarballs"
 
+#Delete Past Product Directory
+rm("products", recursive=true)
+
 if deploy_local
     @info "Deployment: local"
     repo = "local"
