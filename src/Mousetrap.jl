@@ -91,6 +91,10 @@ module Mousetrap
     function (instance::TypedFunction)(args...)
         return Base.convert(instance._return_t, instance._apply([Base.convert(instance._arg_ts[i], args[i]) for i in 1:length(args)]...))
     end
+	
+### utils
+	
+	append_back!(w, items...) = foreach(i -> push_back!(w, i), items)
 
 ####### types.jl
 
