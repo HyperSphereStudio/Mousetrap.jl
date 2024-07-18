@@ -3319,6 +3319,7 @@ module Mousetrap
     const DropDownItemID = UInt64
     export DropDownItemID
 
+	@export_function DropDown empty! Cvoid
     @export_function DropDown remove! Cvoid DropDownItemID id
     @export_function DropDown set_always_show_arrow! Cvoid Bool b
     @export_function DropDown get_always_show_arrow Bool
@@ -4174,6 +4175,7 @@ module Mousetrap
     @export_function ColumnView get_single_click_activate Bool
     @export_function ColumnView get_n_rows Int64
     @export_function ColumnView get_n_columns Int64
+	@export_function ColumnView remove_row! Cvoid UInt64 row
 
     @add_widget_signals ColumnView
     @add_signal_activate ColumnView

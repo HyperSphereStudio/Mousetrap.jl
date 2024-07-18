@@ -4,10 +4,10 @@ run(`$(git()) config --global user.name "Johnathan Bizzano"`)
 run(`$(git()) config --global user.email "bizzanoj@my.erau.edu"`)
 
 const repo_user = "HyperSphereStudio"
-const mousetrap_commit = "d1892f62b8bc433e428211a740706a18992cffda"
-const mousetrap_julia_binding_commit = "f63b6153e5d4a5d2f2621b1d2e914edea0a385d1"
+const mousetrap_commit = "b66a2599d10642991c5a9fc983f69b2caef15cf1"
+const mousetrap_julia_binding_commit = "8d3b3491e997b4d8286876f8986ff84d5b89d5dd"
 
-const VERSION = "0.4.2"
+const VERSION = "0.4.3"
 const deploy_local = false
 const skip_build = true
 const tarball_name = "build_tarballs"
