@@ -4175,12 +4175,14 @@ module Mousetrap
     @export_function ColumnView get_single_click_activate Bool
     @export_function ColumnView get_n_rows Int64
     @export_function ColumnView get_n_columns Int64
-	@export_function ColumnView remove_row! Cvoid UInt64 row
 
     @add_widget_signals ColumnView
     @add_signal_activate ColumnView
 
     Base.show(io::IO, x::ColumnView) = show_aux(io, x, :n_rows, :n_columns)
+	
+	remove_row!(cv::ColumnView, row::Integer) = detail.remove_row!(cv._internal, UInt64(row - 1))
+	export remove_row!
 
 ###### header_bar.jl
 
