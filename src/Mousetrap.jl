@@ -3903,6 +3903,8 @@ module Mousetrap
 
     remove_column_at!(grid::Grid, column_i::Signed) = detail.remove_column_at!(grid._internal, column_i -1)
     export remove_column_at!
+	
+	Base.setindex!(grid::Grid, child, i, j) = insert_at!(grid, child, first(i), first(j), length(i), length(j))
 
     @export_function Grid get_column_spacing Cfloat
     @export_function Grid set_column_spacing! Cvoid Number => Cfloat spacing
