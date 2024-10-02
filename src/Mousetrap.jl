@@ -205,15 +205,19 @@ module Mousetrap
     macro export_function(type, name, return_t)
 
         return_t = esc(return_t)
-
-        Mousetrap.eval(:(export $name))
-        return :($name(x::$type) = Base.convert($return_t, detail.$name(x._internal)))
+		
+		if isdefined(Base, name)
+			return :(Base.$name(x::$type) = Base.convert($return_t, detail.$name(x._internal)))
+		else
+			Mousetrap.eval(:(export $name))
+			return :($name(x::$type) = Base.convert($return_t, detail.$name(x._internal)))
+		end
     end
 
     macro export_function(type, name, return_t, arg1_type, arg1_name)
 
         return_t = esc(return_t)
-
+		
         if arg1_type isa Expr
             arg1_origin_type = arg1_type.args[2]
             arg1_destination_type = arg1_type.args[3]
@@ -222,7 +226,7 @@ module Mousetrap
             arg1_destination_type = arg1_type
         end
         arg1_name = esc(arg1_name)
-
+		
         Mousetrap.eval(:(export $name))
         return :($name(
                 x::$type,
