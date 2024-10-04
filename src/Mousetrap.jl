@@ -203,15 +203,10 @@ module Mousetrap
     end
 
     macro export_function(type, name, return_t)
-
         return_t = esc(return_t)
 		
-		if isdefined(Base, name)
-			return :(Base.$name(x::$type) = Base.convert($return_t, detail.$name(x._internal)))
-		else
-			Mousetrap.eval(:(export $name))
-			return :($name(x::$type) = Base.convert($return_t, detail.$name(x._internal)))
-		end
+		Mousetrap.eval(:(export $name))
+		return :($name(x::$type) = Base.convert($return_t, detail.$name(x._internal)))
     end
 
     macro export_function(type, name, return_t, arg1_type, arg1_name)
@@ -3327,7 +3322,6 @@ module Mousetrap
     const DropDownItemID = UInt64
     export DropDownItemID
 
-	@export_function DropDown empty! Cvoid
     @export_function DropDown remove! Cvoid DropDownItemID id
     @export_function DropDown set_always_show_arrow! Cvoid Bool b
     @export_function DropDown get_always_show_arrow Bool
@@ -3360,6 +3354,14 @@ module Mousetrap
             typed_f(DropDown(drop_down_internal_ref[]))
         end)
     end
+	
+	function Base.empty!(d::DropDown)
+		get_item_at(d, 1) == ~DropDownItemID(0) && return
+		set_selected!(d, get_item_at(d, 1))	
+		while (item = get_item_at(d, 2)) < ~DropDownItemID(0)
+			remove!(d, item)
+		end	
+	end
 
     push_back!(drop_down::DropDown, list_widget::Widget, label_widget::Widget) = push_back!((_::DropDown) -> nothing, drop_down, list_widget, label_widget)
     push_back!(drop_down::DropDown, label::String) = push_back!((_::DropDown) -> nothing, drop_down, label)
